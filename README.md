@@ -12,4 +12,4 @@ http://rpubs.com/pinion87/wordprediction
 
 The URL for the word prediction app itself is located here:
 
-https://pinion87.shinyapps.io/waves2/
+https://pinion87.shinyapps.io/wordpredict/

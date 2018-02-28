@@ -5,23 +5,24 @@ suppressWarnings(library(ngram))
 suppressWarnings(library(dplyr))
 suppressWarnings(library(shiny))
 
+options(shiny.maxRequestSize = 30*1024^2)
 
 #Read in all the text files needed for the app word prediction.
-one_grams_blogs <- read.csv("OneGram_blogs_smaller.csv", stringsAsFactors = F)
-one_grams_news <- read.csv("OneGram_news_smaller.csv",stringsAsFactors = F)
-one_grams_twitter <- read.csv("OneGram_twitter_smaller.csv",stringsAsFactors = F)
+one_grams_blogs <- read.csv("onegram_blogs_smaller.csv", stringsAsFactors = F)
+one_grams_news <- read.csv("onegram_news_smaller.csv",stringsAsFactors = F)
+one_grams_twitter <- read.csv("onegram_twitter_smaller.csv",stringsAsFactors = F)
 
-two_grams_blogs <- read.csv("TwoGram_blogs_smaller.csv",stringsAsFactors = F)
-two_grams_news <- read.csv("TwoGram_news_smaller.csv",stringsAsFactors = F)
-two_grams_twitter <- read.csv("TWoGram_twitter_smaller.csv",stringsAsFactors = F)
+two_grams_blogs <- read.csv("twogram_blogs_smaller.csv",stringsAsFactors = F)
+two_grams_news <- read.csv("twogram_news_smaller.csv",stringsAsFactors = F)
+two_grams_twitter <- read.csv("twogram_twitter_smaller.csv",stringsAsFactors = F)
 
-three_grams_blogs <- read.csv("ThreeGram_blogs_smaller.csv",stringsAsFactors = F)
-three_grams_news <- read.csv("ThreeGram_news_smaller.csv",stringsAsFactors = F)
-three_grams_twitter <- read.csv("ThreeGram_twitter_smaller.csv",stringsAsFactors = F)
+three_grams_blogs <- read.csv("threegram_blogs_smaller.csv",stringsAsFactors = F)
+three_grams_news <- read.csv("threegram_news_smaller.csv",stringsAsFactors = F)
+three_grams_twitter <- read.csv("threegram_twitter_smaller.csv",stringsAsFactors = F)
 
-four_grams_blogs <- read.csv("FourGram_blogs_smaller.csv",stringsAsFactors = F)
-four_grams_news <- read.csv("FourGram_news_smaller.csv",stringsAsFactors = F)
-four_grams_twitter <- read.csv("FourGram_twitter_smaller.csv",stringsAsFactors = F)
+four_grams_blogs <- read.csv("fourgram_blogs_smaller.csv",stringsAsFactors = F)
+four_grams_news <- read.csv("fourgram_news_smaller.csv",stringsAsFactors = F)
+four_grams_twitter <- read.csv("fourgram_twitter_smaller.csv",stringsAsFactors = F)
 
 
 #Function to add maximum likelihood column to unigram frequency tables
