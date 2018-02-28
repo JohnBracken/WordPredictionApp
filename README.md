@@ -5,7 +5,7 @@ This is an example of Natural Language Processing.
 The link to the presentation for the application is
 given below:  
 
-http://rpubs.com/pinion87/trigApp3
+http://rpubs.com/pinion87/wordprediction
 
 
 
