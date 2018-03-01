@@ -1,0 +1,96 @@
+<style>
+body {background-color: #FFDAE2; font-size: 35px;
+}
+.section .reveal .state-background {
+    background: #FFDAE2;}
+.section .reveal h1,
+.section .reveal p {
+    color: black;
+    position: relative;
+    top: 4%;}
+</style> 
+
+
+
+Word Prediction Shiny App
+========================================================
+author: JB
+date:   March 2018
+autosize: false
+font-family: "Helvetica"
+width: 1250
+height: 1000
+
+Word Prediction Model
+========================================================
+
+- Develop a model to predict the next word based on the previous
+one, two or three words (n-grams).
+
+- This type of model could be useful to make search engines and website search
+options more efficient and user-friendly, for example.
+
+- Three different models were investigated:  Katz's backoff model,
+stupid backoff, and linear interpolation.
+
+- Each model was evaluated for speed, accuracy and versatility.
+
+- Katz's backoff became too complex to code beyond trigrams due to the
+presence of a recursive summation term.
+
+- Linear interpolation was able to predict up to 4-grams, but was slow due
+to the extra data preprocessing required.
+
+- Stupid backoff was chosen as the prediction model for the app, due to high speed, flexibility 
+(up to 4-gram prediction) and simplicity to code.
+
+Stupid Backoff Model & Prediction Training Data
+========================================================
+
+- Stupid backoff described in: Brants. et. al., *Large Language Models in Machine Translation*,
+Proceedings of the 2007 Joint Conference on Empirical Methods in Natural Language Processing and 
+Computational Natural Language Learning (EMNLP-CoNLL), 2007.
+
+- Model looks for the highest probability word following an input of three words, based on a 4-gram lookup
+table.  If nothing is found, the model looks for the most likely word following only the
+previous two input words in a 3-gram lookup table.  If nothing is found, a 2-gram table is searched to find the most
+likely word following just the last word of the input.  Finally, if nothing is found here, the mostly frequent single word
+is chosen as the predicted word.
+
+- The lookup n-gram tables are generated from text training datasets, taken from blogs, news sources and tweets.  Lookup
+tables are available for each type of data source.
+
+- Only a small portion of text data was used to facilitate better prediction speed and address memory constraints 
+(~10-20% of the twitter and blogs data, all news data).
+
+- n-grams that were seen only once were removed from the higher order lookup tables to reduce file size.
+
+Shiny Prediction App
+========================================================
+
+```{r, echo=FALSE}
+   knitr::include_graphics('./WordPrediction_app.png')
+```
+- User selects the prediction context, predicting the next word from either the blogs, news or twitter data.
+
+- User can type in a phrase of arbitrary word count and then hit the predict button to predict the next word.  
+
+- The most likely predicted word (if available) is shown following activation of the prediction button.
+
+Summary
+========================================================
+
+- Application was developed to perform word prediction from a blogs, twitter or news context, using a stupid
+backoff prediction model.
+
+- Decision was made to keep blogs, twitter and news predictions separate since the content, writing style and 
+wording between these document types can be quite different.  
+
+- There are advantages to including higher order n-grams in the model to reduce perplexity (measure or model effectiveness).
+
+- Moving from a 2-gram to a 4-gram model reduced model perplexity by a factor of ~4 for blogs, ~5 for twitter and ~6 for news.
+
+- The code for the prediction model and the app can be found at the following link:
+
+<a href = "https://github.com/JohnBracken/WordPredictionApp" target="_blank">Link to Word Prediction App Code</a>
+

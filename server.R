@@ -226,26 +226,26 @@ if(num_words >0){
 
 
 #If three words in phrase, use the 4-gram stupid backoff model to predict the
-#top 10 most likely words.
+#most likely word..
 if(word_count == 3){
   predicted_word <- stupid_backoff_4gram(input_phrase, one_grams, two_grams, three_grams, four_grams) 
-  predicted_word <-predicted_word[1:10,1]
+  predicted_word <-predicted_word[1,1]
   
 
   
-  #If two words in input phrase, use the 3-gram stupid backoff model to predict the top 10
-  #most likely words.
+  #If two words in input phrase, use the 3-gram stupid backoff model to predict the 
+  #most likely word.
 } else if(word_count == 2){
   predicted_word <- stupid_backoff_3gram(input_phrase, one_grams, two_grams, three_grams) 
-  predicted_word <-predicted_word[1:10,1]
+  predicted_word <-predicted_word[1,1]
   
  
   
   #If only one word in input phrase, use just the bigram stupid backoff model to predict
-  #the top 10 most likely words.    
+  #the most likely word.
 } else if(word_count == 1){
   predicted_word <- stupid_backoff_2gram(input_phrase, one_grams, two_grams) 
-  predicted_word <-predicted_word[1:10,1]
+  predicted_word <-predicted_word[1,1]
   
   #If no words entered, ask the user to enter at least one word.    
 } else{
