@@ -5,11 +5,11 @@ This is an example of Natural Language Processing.
 The link to the presentation for the application is
 given below:  
 
-http://rpubs.com/pinion87/wordprediction
+[NLP Presentation](http://rpubs.com/pinion87/wordprediction)
 
 
 
 
 The URL for the word prediction app itself is located here:
 
-https://pinion87.shinyapps.io/wordpredict/
+[Word Prediction App](https://pinion87.shinyapps.io/wordpredict/)
